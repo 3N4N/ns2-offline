@@ -125,16 +125,15 @@ for {set i 0} {$i < $val(nn)} {incr i} {
 # Traffic
 set val(nf)         20                ;# number of flows
 
-# set src [expr {int($val(nn) / 2)}]
-# set src [ randnum 0 [expr $val(nn) - 1]]
+set src [ randnum 0 [expr $val(nn) - 1]]
 for {set i 0} {$i < $val(nf)} {incr i} {
-    set src $i
-    set dest [expr $i + 10]
+    # set src $i
+    # set dest [expr $i + 10]
 
-    # set dest [ randnum 0 [expr $val(nn) - 1]]
-    # while { $src == $dest } {
-    #     set src [ randnum 0 [expr $val(nn) - 1]]
-    # }
+    set dest [ randnum 0 [expr $val(nn) - 1]]
+    while { $src == $dest } {
+        set src [ randnum 0 [expr $val(nn) - 1]]
+    }
 
     # Traffic config
     # create agent
