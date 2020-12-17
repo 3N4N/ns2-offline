@@ -116,6 +116,7 @@ for {set i 0} {$i < $val(nn)} {incr i} {
     $node($i) set Y_ $y_pos;
     $node($i) set Z_ 0.0
 
+    $ns at 1.0 "$node($i) setdest [randnum 1 [ expr int($grid_dim - 1)]] [randnum 1 [ expr int($grid_dim - 1)]] [randnum 1 5]"
     $ns initial_node_pos $node($i) 20
 }
 
