@@ -2,3 +2,77 @@ Network Simulator
 =================
 
 This is an assignment for Level-3/Term-2.
+
+Overview
+--------
+
+A wireless network simulator is built with ns2 and parsed with awk.
+
+The parameters for the network are as follows:
+
+- Wireless MAC Type
+    [ ] Wireless 802.15.4
+    [x] Wireless 802.11
+- Routing Protocol
+    [x] DSDV
+    [ ] AODV
+    [ ] DSR
+- Agent + Application
+    [ ] UDP + Exponential Traffic
+    [ ] UDP + CBR Traffic
+    [ ] TCP Reno + FTP
+    [x] TCP Tahoe + Telnet,
+- Node Positioning
+    [x] Random (Randomly place nodes anywhere with area)
+    [ ] Grid (Place nodes in a grid. You can choose the number of rows and
+        columns yourself)
+- Flow
+    [ ] Random Source Destination (For each flow, choose random source and
+        destination. Careful not to choose same node as source and destination)
+    [x] 1 Source, Random Sink (except source itself) (Choose a random source X,
+        then for each flow choose X as source, and any other node as
+        destination)
+    [ ] 1 Sink, Random Source (Choose a random sink X, then for each flow choose
+        X as destination, and any other node as source)
+- Queue: Droptail, max size 50 (Using Queue/DropTail/PriQueue with DSR may cause
+  segmentation fault. In that case you can use CMUPriQueue instead.)
+- Antenna: Omni Directional
+- Speed of nodes: Uniform random between 1m/s and 5m/s for each node.
+- Propagation Model: Two Ray Ground Propagation Model
+
+
+The simulation is to be run a number of times with varying parameters and the
+results are to be plotted on graph.
+
+Baseline Parameters
+(while varying one parameter, keep other parameters fixed like below)
+    - Area Size: 500m x 500m
+    - Number of Nodes: 40
+    - Number of flows: 20
+
+Vary parameters
+    - Area Size
+        - 250m x 250m
+        - 500m x 500m
+        - 750m x 750m
+        - 1000m x 1000m
+        - 1250m x 1250m
+    - Number of Nodes
+        - 20
+        - 40
+        - 60
+        - 80
+        - 100
+    - Number of flows
+        - 10
+        - 20
+        - 30
+        - 40
+        - 50
+
+Metrics: For each of the varying parameters, plot 4 graph showing,
+    - Network throughput
+    - End-to-end delay
+    - Packet delivery ratio (total # of packets delivered to end destination /
+      total # of packets sent)
+    - Packet drop ratio (total # of packets dropped / total # of packets sent)
