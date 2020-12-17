@@ -76,3 +76,32 @@ Metrics: For each of the varying parameters, plot 4 graph showing,
     - Packet delivery ratio (total # of packets delivered to end destination /
       total # of packets sent)
     - Packet drop ratio (total # of packets dropped / total # of packets sent)
+
+The varying parameters are to be used to generate graphs, which will be
+generated in bin/ folder and will have extension xg. Use xgraph utility to open
+the graph file. For example:
+
+        xgraph bin/dlay-area.xg
+
+Installing XGraph
+-----------------
+
+XGraph can be downloaded from here: http://www.xgraph.org/linux/index.html
+
+Or you can simply use the following command:
+
+        wget http://www.xgraph.org/linux/xgraph_4.38_linux64.tar.gz
+
+Extract the gunzip file and place the xgraph binary file inside it in your
+$PATH.
+
+        tar xvzf ./xgraph_4.38_linux64.tar.gz
+        cp ./XGraph4.38_linux64/bin/xgraph ~/.local/bin
+
+
+Running XGraph
+--------------
+
+Open the graph files in this project with xgraph. For example:
+
+        xgraph bin/dlay-area.xg
