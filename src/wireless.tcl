@@ -17,17 +17,33 @@ set val(mac)          Mac/802_11               ;# MAC type
 # set val(mac)          Mac/802_15_4             ;# MAC type
 set val(rp)           DSDV                     ;# ad-hoc routing protocol
 set val(nn)           40                       ;# number of mobilenodes
+set val(nf)           20                ;# number of flows
 set grid_dim          500
+set val(tf)           bin/trace.tr
+set val(af)           bin/animation.nam
 # =======================================================================
+
+if { $::argc > 0 } {
+    set grid_dim [lindex $argv 0]
+    set val(nn)  [lindex $argv 1]
+    set val(nf)  [lindex $argv 2]
+    set val(tf)  [lindex $argv 3]
+    set val(af)  [lindex $argv 4]
+    # puts $grid_dim
+    # puts $val(nn)
+    # puts $val(nf)
+    # exit
+}
+
 
 exec mkdir -p -- bin
 
 # trace file
-set trace_file [open bin/trace.tr w]
+set trace_file [open $val(tf) w]
 $ns trace-all $trace_file
 
 # nam file
-set nam_file [open bin/animation.nam w]
+set nam_file [open $val(af) w]
 $ns namtrace-all-wireless $nam_file $grid_dim $grid_dim
 
 # topology: to keep track of node movements
@@ -123,7 +139,6 @@ for {set i 0} {$i < $val(nn)} {incr i} {
 
 
 # Traffic
-set val(nf)         20                ;# number of flows
 
 set src [ randnum 0 [expr $val(nn) - 1]]
 for {set i 0} {$i < $val(nf)} {incr i} {
