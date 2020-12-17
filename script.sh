@@ -26,9 +26,9 @@ done
 printf "title_x = Area\ntitle_y = Throughput\n" > bin/thru-area.xg
 printf "title_x = Node\ntitle_y = Throughput\n" > bin/thru-node.xg
 printf "title_x = Flow\ntitle_y = Throughput\n" > bin/thru-flow.xg
-printf "title_x = Area\ntitle_y = Avg\n" > bin/dlay-area.xg
-printf "title_x = Node\ntitle_y = Avg\n" > bin/dlay-node.xg
-printf "title_x = Flow\ntitle_y = Avg\n" > bin/dlay-flow.xg
+printf "title_x = Area\ntitle_y = Avg. Delay\n" > bin/dlay-area.xg
+printf "title_x = Node\ntitle_y = Avg. Delay\n" > bin/dlay-node.xg
+printf "title_x = Flow\ntitle_y = Avg. Delay\n" > bin/dlay-flow.xg
 printf "title_x = Area\ntitle_y = Delivery\n" > bin/dlvr-area.xg
 printf "title_x = Node\ntitle_y = Delivery Ratio\n" > bin/dlvr-node.xg
 printf "title_x = Flow\ntitle_y = Delivery Ratio\n" > bin/dlvr-flow.xg
