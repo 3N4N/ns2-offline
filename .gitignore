@@ -1,1 +1,6 @@
 tags
+test/
+src/test.tcl
+
+*.nam
+*.tr
