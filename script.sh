@@ -5,6 +5,10 @@ if [ ! -f src/parse.awk ] || [ ! -f src/wireless.tcl ]; then
     exit
 fi
 
+if [ ! -d bin ]; then
+    mkdir -p bin
+fi
+
 areas=(250 500 750 1000 1250)
 nodes=(20 40 60 80 100)
 flows=(10 20 30 40 50)
@@ -38,16 +42,16 @@ printf "title_x = Flow\ntitle_y = Drop Ratio\n" > bin/drop-flow.xg
 
 for i in {1..5}; do
     j=$(($i - 1))
-    echo $(grep -w Throughput bin/area-$i.txt | awk '{print $2}') ${areas[$j]}  >> bin/thru-area.xg
-    echo $(grep -w Throughput bin/node-$i.txt | awk '{print $2}') ${nodes[$j]}  >> bin/thru-node.xg
-    echo $(grep -w Throughput bin/flow-$i.txt | awk '{print $2}') ${flows[$j]} >> bin/thru-flow.xg
-    echo $(grep -w Delay bin/area-$i.txt | awk '{print $3}') ${areas[$j]}  >> bin/dlay-area.xg
-    echo $(grep -w Delay bin/node-$i.txt | awk '{print $3}') ${nodes[$j]}  >> bin/dlay-node.xg
-    echo $(grep -w Delay bin/flow-$i.txt | awk '{print $3}') ${flows[$j]} >> bin/dlay-flow.xg
-    echo $(grep -w Delivery bin/area-$i.txt | awk '{print $3}') ${areas[$j]}  >> bin/dlvr-area.xg
-    echo $(grep -w Delivery bin/node-$i.txt | awk '{print $3}') ${nodes[$j]}  >> bin/dlvr-node.xg
-    echo $(grep -w Delivery bin/flow-$i.txt | awk '{print $3}') ${flows[$j]} >> bin/dlvr-flow.xg
-    echo $(grep -w Drop bin/area-$i.txt | awk '{print $3}') ${areas[$j]}  >> bin/drop-area.xg
-    echo $(grep -w Drop bin/node-$i.txt | awk '{print $3}') ${nodes[$j]}  >> bin/drop-node.xg
-    echo $(grep -w Drop bin/flow-$i.txt | awk '{print $3}') ${flows[$j]} >> bin/drop-flow.xg
+    echo ${areas[$j]} $(grep -w Throughput bin/area-$i.txt | awk '{print $2}') >> bin/thru-area.xg
+    echo ${nodes[$j]} $(grep -w Throughput bin/node-$i.txt | awk '{print $2}') >> bin/thru-node.xg
+    echo ${flows[$j]} $(grep -w Throughput bin/flow-$i.txt | awk '{print $2}') >> bin/thru-flow.xg
+    echo ${areas[$j]} $(grep -w Delay bin/area-$i.txt | awk '{print $3}') >> bin/dlay-area.xg
+    echo ${nodes[$j]} $(grep -w Delay bin/node-$i.txt | awk '{print $3}') >> bin/dlay-node.xg
+    echo ${flows[$j]} $(grep -w Delay bin/flow-$i.txt | awk '{print $3}') >> bin/dlay-flow.xg
+    echo ${areas[$j]} $(grep -w Delivery bin/area-$i.txt | awk '{print $3}') >> bin/dlvr-area.xg
+    echo ${nodes[$j]} $(grep -w Delivery bin/node-$i.txt | awk '{print $3}') >> bin/dlvr-node.xg
+    echo ${flows[$j]} $(grep -w Delivery bin/flow-$i.txt | awk '{print $3}') >> bin/dlvr-flow.xg
+    echo ${areas[$j]} $(grep -w Drop bin/area-$i.txt | awk '{print $3}') >> bin/drop-area.xg
+    echo ${nodes[$j]} $(grep -w Drop bin/node-$i.txt | awk '{print $3}') >> bin/drop-node.xg
+    echo ${flows[$j]} $(grep -w Drop bin/flow-$i.txt | awk '{print $3}') >> bin/drop-flow.xg
 done
