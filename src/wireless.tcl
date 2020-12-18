@@ -21,6 +21,15 @@ set val(nf)           20                ;# number of flows
 set grid_dim          500
 set val(tf)           bin/trace.tr
 set val(af)           bin/animation.nam
+
+# https://www.linuxquestions.org/questions/showthread.php?s=94af03f6eb61ab5e0a38e0b7f071ef03&p=6196715&fbclid=IwAR23SGP1Sdt4-e1pabLB7WwkJrrfuET-vmQzW3bc0KV5YYHWWIaLtcZnmrs#post6196715
+set val(energymodel_15) EnergyModel ;
+set val(initialenergy_15) 3.0 ;# Initial energy in Joules
+set val(idlepower_15) 0.45 ;#LEAP (802.11g)
+set val(rxpower_15) 0.9 ;#LEAP (802.11g)
+set val(txpower_15) 0.5 ;#LEAP (802.11g)
+set val(sleeppower_15) 0.05 ;#LEAP (802.11g)
+
 # =======================================================================
 
 if { $::argc > 0 } {
@@ -90,6 +99,12 @@ $ns node-config -adhocRouting $val(rp) \
                 -phyType $val(netif) \
                 -topoInstance $topo \
                 -channelType $val(chan) \
+                # -energyModel $val(energymodel_15) \
+                # -idlePower $val(idlepower_15) \
+                # -rxPower $val(rxpower_15) \
+                # -txPower $val(txpower_15) \
+                # -sleepPower $val(sleeppower_15) \
+                # -initialEnergy $val(initialenergy_15)\
                 -agentTrace ON \
                 -routerTrace ON \
                 -macTrace OFF \
